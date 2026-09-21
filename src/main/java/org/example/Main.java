@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,6 +16,7 @@ public class Main {
         System.out.println(getStatusCodes(logs));
         System.out.println(getUrlRequests(logs));
         System.out.println(getRequestsFromIps(logs));
+        System.out.println(parse(logs));
     }
 
     public static int countRequest(String[] logs) {
@@ -59,5 +57,19 @@ public class Main {
             map.put(splitted[0], map.getOrDefault(splitted[0], 0) + 1);
         }
         return map;
+    }
+
+    public static List<LogEntry> parse(String[] logs) {
+        List<LogEntry> list = new ArrayList<>();
+        for (String entry : logs) {
+            String[] entrysplit = entry.split(" ");
+            String ip = entrysplit[0];
+            String method = entrysplit[1];
+            String url = entrysplit[2];
+            int statusCode = Integer.parseInt(entrysplit[3]);
+            LogEntry e = new LogEntry(ip, method, url, statusCode);
+            list.add(e);
+        }
+        return list;
     }
 }
