@@ -14,5 +14,8 @@ public class Main {
         List<LogEntry> list = Parser.parse(rawLogs);
         LogAnalyzer analisator = new LogAnalyzer(list);
         System.out.println(analisator.getStatusCodes(list));
+        System.out.println(analisator.getMostPopularIp(list));
+        System.out.println(analisator.percentageOfAcceptedRequests(list));
+        System.out.println(analisator.overAllStatistics(list));
     }
 }
