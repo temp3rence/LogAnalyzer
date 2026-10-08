@@ -1,0 +1,5 @@
+127.0.0.1 GET /index 200
+127.0.0.1 GET /about 404
+192.168.0.5 POST /login 200
+10.0.0.2 GET /profile 500
+192.168.0.5 GET /index 200

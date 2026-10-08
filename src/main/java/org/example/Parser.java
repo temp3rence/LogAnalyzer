@@ -4,13 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Parser {
-    private String[] logs;
-
-    public Parser(String[] logs) {
-        this.logs = logs;
-    }
-
-    public static List<LogEntry> parse(String[] logs) {
+    private Parser(){}
+    public static List<LogEntry> parse(List<String> logs) {
         List<LogEntry> list = new ArrayList<>();
         for (String entry : logs) {
             String[] entrysplit = entry.split(" ");
