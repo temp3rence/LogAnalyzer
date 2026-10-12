@@ -12,5 +12,7 @@ public class Main {
         System.out.println(analisator.getMostPopularIp());
         System.out.println(analisator.percentageOfAcceptedRequests());
         System.out.println(analisator.overAllStatistics());
+        System.out.println(analisator.top10IP());
+        System.out.println(analisator.top10URL());
     }
 }

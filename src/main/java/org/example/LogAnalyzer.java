@@ -86,4 +86,30 @@ public class LogAnalyzer {
         }
         return map;
     }
+
+    public List<Map.Entry<String, Integer>> top10IP() {
+        Map<String, Integer> map = new HashMap<>();
+        for (LogEntry entry : this.entries) {
+            map.put(entry.getIp(), map.getOrDefault(entry.getIp(), 0) + 1);
+        }
+        List<Map.Entry<String, Integer>> frequencies = new ArrayList<>(map.entrySet());
+        frequencies.sort(
+                Comparator.comparingInt(Map.Entry<String,Integer>::getValue)
+                        .reversed()
+        );
+        return frequencies;
+    }
+
+    public List<Map.Entry<String,Integer>> top10URL() {
+        Map<String, Integer> map = new HashMap<>();
+        for (LogEntry entry : this.entries) {
+            map.put(entry.getUrl(), map.getOrDefault(entry.getUrl(), 0) + 1);
+        }
+        List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
+        list.sort(
+                Comparator.comparingInt(Map.Entry<String,Integer>::getValue)
+                        .reversed()
+        );
+        return list;
+    }
 }
