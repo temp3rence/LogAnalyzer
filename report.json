@@ -1,0 +1,44 @@
+{
+  "totalEntries" : 6,
+  "topIps" : [ {
+    "value" : "192.168.0.5",
+    "frequency" : 2
+  }, {
+    "value" : "127.0.0.1",
+    "frequency" : 2
+  }, {
+    "value" : "192.168.0.4",
+    "frequency" : 1
+  }, {
+    "value" : "10.0.0.2",
+    "frequency" : 1
+  } ],
+  "topUrls" : [ {
+    "value" : "/index",
+    "frequency" : 3
+  }, {
+    "value" : "/login",
+    "frequency" : 1
+  }, {
+    "value" : "/about",
+    "frequency" : 1
+  }, {
+    "value" : "/profile",
+    "frequency" : 1
+  } ],
+  "overallStatistics" : {
+    "192.168.0.4" : {
+      "200" : 1
+    },
+    "10.0.0.2" : {
+      "500" : 1
+    },
+    "192.168.0.5" : {
+      "200" : 2
+    },
+    "127.0.0.1" : {
+      "404" : 1,
+      "200" : 1
+    }
+  }
+}

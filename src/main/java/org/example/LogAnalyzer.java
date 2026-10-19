@@ -10,8 +10,8 @@ public class LogAnalyzer {
         this.entries = list;
     }
 
-    public int countRequest(List<LogEntry> logs) {
-        return logs.size();
+    public int countRequest() {
+        return this.entries.size();
     }
 
     public Set<String> getUniqueIps() {
@@ -87,20 +87,25 @@ public class LogAnalyzer {
         return map;
     }
 
-    public List<Map.Entry<String, Integer>> top10IP() {
+    public List<FrequencyRecord> top10IP() {
         Map<String, Integer> map = new HashMap<>();
         for (LogEntry entry : this.entries) {
             map.put(entry.getIp(), map.getOrDefault(entry.getIp(), 0) + 1);
         }
-        List<Map.Entry<String, Integer>> frequencies = new ArrayList<>(map.entrySet());
-        frequencies.sort(
+        List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
+        list.sort(
                 Comparator.comparingInt(Map.Entry<String,Integer>::getValue)
                         .reversed()
         );
-        return frequencies;
+        List<FrequencyRecord> result = new ArrayList<>();
+        int limit = Math.min(10, list.size());
+        for (int i = 0; i < limit; i++) {
+            result.add(new FrequencyRecord(list.get(i).getKey(), list.get(i).getValue()));
+        }
+        return result;
     }
 
-    public List<Map.Entry<String,Integer>> top10URL() {
+    public List<FrequencyRecord> top10URL() {
         Map<String, Integer> map = new HashMap<>();
         for (LogEntry entry : this.entries) {
             map.put(entry.getUrl(), map.getOrDefault(entry.getUrl(), 0) + 1);
@@ -110,6 +115,11 @@ public class LogAnalyzer {
                 Comparator.comparingInt(Map.Entry<String,Integer>::getValue)
                         .reversed()
         );
-        return list;
+        List<FrequencyRecord> result = new ArrayList<>();
+        int limit = Math.min(10, list.size());
+        for (int i = 0; i < limit; i++) {
+            result.add(new FrequencyRecord(list.get(i).getKey(), list.get(i).getValue()));
+        }
+        return result;
     }
 }
