@@ -13,6 +13,7 @@ public class Main {
         LogAnalyzer analisator = new LogAnalyzer(list);
         AnalysisReport report = new AnalysisReport(
                 analisator.countRequest(),
+                analisator.percentageOfAcceptedRequests(),
                 analisator.top10IP(),
                 analisator.top10URL(),
                 analisator.overAllStatistics()

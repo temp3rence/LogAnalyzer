@@ -6,9 +6,10 @@ public class ReportPrinter {
     private ReportPrinter() {}
 
     public static void prettyPrint(AnalysisReport record) {
-        System.out.println("== LOGS ANALYSIS==");
+        System.out.println("== LOGS ANALYSIS ==");
         System.out.println();
         System.out.printf("Total entries: %d\n", record.totalEntries());
+        System.out.printf("Percentage of successful requests: %d\n", record.percentage());
         System.out.println("TOP 10 IPS");
         System.out.println("ip\t\t\tfrequency");
         for (FrequencyRecord frequencies : record.topIps()) {

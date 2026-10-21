@@ -1,5 +1,6 @@
 {
   "totalEntries" : 6,
+  "percentage" : 66,
   "topIps" : [ {
     "value" : "192.168.0.5",
     "frequency" : 2
