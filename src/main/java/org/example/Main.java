@@ -8,15 +8,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Main {
     public static void main(String[] args) {
-        Path path = Path.of("logs.txt");
+        Path path;
+        if (args.length == 0) {
+            System.err.println("Usage: java -jar log-analyzer.jar <path-to-log>, currently analyzing logs.txt from project directory");
+            path = Path.of("/Users/a1234/Documents/Progressmaking\\ and\\ Dayana/Java/LogAnalyzer/logs.txt\n");
+        } else {
+            path = Path.of(args[0]);
+        }
         List<LogEntry> list = LogParser.parse(LogFileReader.readAll(path));
-        LogAnalyzer analisator = new LogAnalyzer(list);
+        LogAnalyzer analyzer = new LogAnalyzer(list);
         AnalysisReport report = new AnalysisReport(
-                analisator.countRequest(),
-                analisator.percentageOfAcceptedRequests(),
-                analisator.top10IP(),
-                analisator.top10URL(),
-                analisator.overAllStatistics()
+                analyzer.countRequest(),
+                analyzer.percentageOfAcceptedRequests(),
+                analyzer.top10IP(),
+                analyzer.top10URL(),
+                analyzer.overAllStatistics()
         );
         ReportPrinter.prettyPrint(report);
         ObjectMapper mapper = new ObjectMapper();
