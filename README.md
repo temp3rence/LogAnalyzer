@@ -177,3 +177,6 @@ This is my first Java project written from scratch.
 Its main purpose was to combine individual Java Core topics into one complete application instead of practicing them only through isolated exercises.
 
 The project helped me practice transforming raw input into structured objects, choosing appropriate data structures, separating responsibilities between classes, testing application logic and producing multiple representations of the same analysis result.
+
+## Development
+How to make changes in LogAnalyzer is in [CONTRIBUTING.md] (CONTRIBUTING.md).
